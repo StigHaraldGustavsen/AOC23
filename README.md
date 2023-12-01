@@ -1,4 +1,7 @@
+
 # Advent of Code 2023
+
+![Tests](https://github.com/StigHaraldGustavsen/AOC23/actions/workflows/tests.yml/badge.svg)
 
 ```bash
 poetry install
