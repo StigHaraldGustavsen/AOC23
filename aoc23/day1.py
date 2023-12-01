@@ -24,41 +24,54 @@ def get_num(cal_string):
         return int(first+last)
     
 
-while myline:
-
-    numbers.append(get_num(myline))
-
-    myline = myline.replace("one","o1e")
-    myline = myline.replace("two","t2o")
-    myline = myline.replace("three","th3ee")
-    myline = myline.replace("four","fo4ur")
-    myline = myline.replace("five","fi5ve")
-    myline = myline.replace("six","si6x")
-    myline = myline.replace("seven","sev7en")
-    myline = myline.replace("eight","eig8ht")
-    myline = myline.replace("nine","ni9ne")
-    #print(myline)
-    numbers_p2.append(get_num(myline))
-
+#Todays task
+def day1(file):
+    myfile = open(file, "r")
     myline = myfile.readline()
-myfile.close()
 
-print(numbers)
-sum = 0
-for number in numbers:
-    sum += number
+    numbers = []
+    numbers_p2 = []
+    
+    while myline:
 
-print('result')
-print(sum)
+        numbers.append(get_num(myline))
 
-print(numbers_p2)
-sum2 = 0
-for number in numbers_p2:
-    sum2 += number
+        myline = myline.replace("one","o1e")
+        myline = myline.replace("two","t2o")
+        myline = myline.replace("three","th3ee")
+        myline = myline.replace("four","fo4ur")
+        myline = myline.replace("five","fi5ve")
+        myline = myline.replace("six","si6x")
+        myline = myline.replace("seven","sev7en")
+        myline = myline.replace("eight","eig8ht")
+        myline = myline.replace("nine","ni9ne")
+        
+        numbers_p2.append(get_num(myline))
 
-print('result for part 2')
-print(sum2)
-print('\n')
+        myline = myfile.readline()
+    myfile.close()
+
+    print(numbers)
+    sum = 0
+    for number in numbers:
+        sum += number
+
+    print('result')
+    print(sum)
+
+    print(numbers_p2)
+    sum2 = 0
+    for number in numbers_p2:
+        sum2 += number
+
+    print('result for part 2')
+    print(sum2)
+    print('\n')
+    return ((sum,sum2))
+
+
+#Development
+
 if __name__ == '__main__':
     #simple test
     print(get_num("sf1ffv2fgdf3dfs45"))
@@ -67,3 +80,41 @@ if __name__ == '__main__':
     test = test.replace("nine","9")
     print(test)
     print(get_num(test))
+
+    
+    while myline:
+
+        numbers.append(get_num(myline))
+
+        myline = myline.replace("one","o1e")
+        myline = myline.replace("two","t2o")
+        myline = myline.replace("three","th3ee")
+        myline = myline.replace("four","fo4ur")
+        myline = myline.replace("five","fi5ve")
+        myline = myline.replace("six","si6x")
+        myline = myline.replace("seven","sev7en")
+        myline = myline.replace("eight","eig8ht")
+        myline = myline.replace("nine","ni9ne")
+        
+        numbers_p2.append(get_num(myline))
+
+        myline = myfile.readline()
+    myfile.close()
+
+
+    print(numbers)
+    sum = 0
+    for number in numbers:
+        sum += number
+
+    print('result')
+    print(sum)
+
+    print(numbers_p2)
+    sum2 = 0
+    for number in numbers_p2:
+        sum2 += number
+
+    print('result for part 2')
+    print(sum2)
+    print('\n')
