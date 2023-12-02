@@ -3,7 +3,7 @@ myfile = open("aoc23/d2/data", "r")
 myline = myfile.readline()
 
 
-possible_games = []
+
 
 def count_cubes(cubes):
     blue = 0
@@ -27,6 +27,7 @@ def count_cubes(cubes):
     return result
 
 def day2(file):
+    possible_games = []
     myfile = open(file, "r")
     myline = myfile.readline()
     while myline:
@@ -62,6 +63,57 @@ def day2(file):
     return sum
 
 
+
+def day2_2(file):
+    myfile = open(file, "r")
+    myline = myfile.readline()
+    game_score_sum =  0
+    while myline:
+        string_list = myline.split(': ')
+        game_possible = True
+
+        try:
+            game_nr = int(string_list[0].replace("Game ","").replace("Game ",""))
+        except:
+            print('error after game number :'+str(game_nr))
+        
+        games = string_list[1].split('; ')
+
+        red = 0
+        green = 0
+        blue = 0
+
+        for i, game in enumerate(games):
+            cubes_string = game.split(', ')
+            cubes = count_cubes(cubes_string)
+
+            if i == 0: #initsialize
+                red = cubes['red']
+                green = cubes['green']
+                blue = cubes['blue']
+            else:
+                True
+
+            if cubes['red'] > red:
+                red = cubes['red']
+            if cubes['blue'] > blue:
+                blue = cubes['blue']
+            if cubes['green'] > green:
+                green = cubes['green']
+        
+        game_score_sum +=  red*blue*green  
+
+        red = 0
+        green = 0
+        blue = 0
+        myline = myfile.readline()
+
+
+    return game_score_sum
+
+
+
 if __name__ == '__main__':
-    True
-    day2("aoc23/d2/data")
+    
+    #day2("aoc23/d2/test")
+    print(day2_2("aoc23/d2/data"))
