@@ -143,6 +143,78 @@ def day3(file):
 # 538112
 # 538112 is to high.. 
 
+def day3_2(file):
+    list_of_symbols = find_distinct_symbols(file) #list of distict symbols
+    list_of_symbols.remove('*')
+    list_of_symbol_positions = map_out_symbols(file) #list of tuple coords [(line_nr,idx)]
+    #print(list_of_symbol_positions)
+    #print(list_of_symbol_positions)
+
+    new_file = ""
+    clean_line = ""
+    myfile = open(file, "r")
+    myline = myfile.readline()
+    line_nr = 0
+    adjacent_number_to_symbol = []
+    gear_multiplier_collection = []
+    gears = []
+    lines = []
+
+    while myline:
+
+        clean_line = myline
+        for symbol in list_of_symbols:
+            #removes symbols form string and runs them into '.'
+            myline = myline.replace(symbol,'.')
+        lines.append(myline)
+        line_nr += 1
+        myline = myfile.readline()
+    
+    for i, line in enumerate(lines):
+        #søk etter '*'
+        if '*' in line:
+            for j in range(len(line)):
+                if line[j]=='*':
+                    gears.append((i,j))
+    
+    for i, (x,y) in enumerate(gears):
+        #søk etter tall
+        #in my dataset there is not * in first or last line, making this simpler
+        gears_numbers = []
+        
+        line_above = lines[x-1]        
+        line = lines[x]
+        line_below = lines[x+1]
+
+        numbers_to_check = []
+        for num in find_numbers(line_above.replace('*','.')):
+            numbers_to_check.append(num)
+        for num in find_numbers(line.replace('*','.')):
+            numbers_to_check.append(num)
+        for num in find_numbers(line_below.replace('*','.')):
+            numbers_to_check.append(num)
+
+        #print(numbers_to_check)
+        #f,g =numbers_to_check[0]
+        #print(type(g))
+        for number_tuple in numbers_to_check:
+            num_y = number_tuple[1]
+            number = number_tuple[0]
+            #print(str(number)+' at '+str(num_y))
+            #print('at Y '+str(y))
+            #print(type(number))
+            if num_y-1 <= y <= num_y+len(str(number)):
+                print('found '+str(number)+' to * nr '+str(i))    
+                gears_numbers.append(number)
+        if len(gears_numbers) == 2:
+            gear_multiplier_collection.append(gears_numbers[0]*gears_numbers[1])
+
+    sum = 0
+    for num in gear_multiplier_collection:
+        sum += num
+    return sum
+
+
 if __name__ == '__main__':
     #print(find_distinct_symbols('aoc23/d3/data'))
     #print(map_out_symbols('aoc23/d3/test'))
@@ -150,4 +222,7 @@ if __name__ == '__main__':
     #print(find_numbers('..35..633.555'))
     #print(find_numbers('467..114..'))
     #print(day3('aoc23/d3/test'))
-    print(day3('aoc23/d3/data'))
+    #print(day3('aoc23/d3/data'))
+    
+    #print('result part 2: '+str(day3_2('aoc23/d3/test')))
+    print('result part 2: '+str(day3_2('aoc23/d3/data')))

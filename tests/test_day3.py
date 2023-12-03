@@ -1,4 +1,4 @@
-from aoc23.day3 import day3, find_numbers, map_out_symbols , find_distinct_symbols
+from aoc23.day3 import day3, find_numbers, map_out_symbols , find_distinct_symbols, day3_2
 
 file = "aoc23/d3/test"
 
@@ -12,3 +12,7 @@ def test_find_numbers():
 def test_day3():
     res = day3("aoc23/d3/test")
     assert res == 4361
+
+def test_day3():
+    res = day3_2("aoc23/d3/test")
+    assert res == 467835
