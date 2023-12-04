@@ -112,8 +112,6 @@ def day3(file):
         line_nr += 1
         myline = myfile.readline()
     
-    #print(adjacent_number_to_symbol)
-    #print(adjacent_number_to_symbol)
     f = open('clean','w')
     f.write(new_file)
     sum = 0
@@ -126,7 +124,6 @@ def day3(file):
 # loop thorugh and find numbers and number length
 # search for if there is a symbol nearby 
 # store to a list if there is a symbol nearby
-
 
 def day3_2(file):
     list_of_symbols = find_distinct_symbols(file) #list of distict symbols
@@ -179,15 +176,10 @@ def day3_2(file):
         for num in find_numbers(line_below.replace('*','.')):
             numbers_to_check.append(num)
 
-        #print(numbers_to_check)
-        #f,g =numbers_to_check[0]
-        #print(type(g))
         for number_tuple in numbers_to_check:
             num_y = number_tuple[1]
             number = number_tuple[0]
-            #print(str(number)+' at '+str(num_y))
-            #print('at Y '+str(y))
-            #print(type(number))
+
             if num_y-1 <= y <= num_y+len(str(number)):
                 #print('found '+str(number)+' to * nr '+str(i))    
                 gears_numbers.append(number)
@@ -198,7 +190,6 @@ def day3_2(file):
     for num in gear_multiplier_collection:
         sum += num
     return sum
-
 
 if __name__ == '__main__':
     #print(find_distinct_symbols('aoc23/d3/data'))
