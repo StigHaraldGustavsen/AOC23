@@ -1,10 +1,3 @@
-myfile = open("aoc23/d3/test", "r")
-#myfile = open("aoc23/d3/data", "r")
-
-myline = myfile.readline()
-
-while myline:
-    myline = myfile.readline()
 
 def find_distinct_symbols(file):
     """
@@ -135,14 +128,6 @@ def day3(file):
 # store to a list if there is a symbol nearby
 
 
-# 530495
-# 534200
-# 538934
-# 529673 is to low
-# 529673
-# 538112
-# 538112 is to high.. 
-
 def day3_2(file):
     list_of_symbols = find_distinct_symbols(file) #list of distict symbols
     list_of_symbols.remove('*')
@@ -204,7 +189,7 @@ def day3_2(file):
             #print('at Y '+str(y))
             #print(type(number))
             if num_y-1 <= y <= num_y+len(str(number)):
-                print('found '+str(number)+' to * nr '+str(i))    
+                #print('found '+str(number)+' to * nr '+str(i))    
                 gears_numbers.append(number)
         if len(gears_numbers) == 2:
             gear_multiplier_collection.append(gears_numbers[0]*gears_numbers[1])
@@ -223,6 +208,5 @@ if __name__ == '__main__':
     #print(find_numbers('467..114..'))
     #print(day3('aoc23/d3/test'))
     #print(day3('aoc23/d3/data'))
-    
     #print('result part 2: '+str(day3_2('aoc23/d3/test')))
     print('result part 2: '+str(day3_2('aoc23/d3/data')))
